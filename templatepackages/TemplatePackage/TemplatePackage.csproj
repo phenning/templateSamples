@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <IncludeBuildOutput>False</IncludeBuildOutput>
+    <IncludeSource>False</IncludeSource>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <EnableDefaultItems>False</EnableDefaultItems>
+    <IsPackable>true</IsPackable>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <PackageId>MyCompany.SampleTemplates</PackageId>
+    <Authors>Company</Authors>
+    <Description>Sample Templates</Description>
+    <language>en-US</language>
+    <PackageType>Template</PackageType>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <VersionSuffix>beta1</VersionSuffix>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Remove="Microsoft.NETCore.App" />
+    <Content Include="content\**">
+        <PackagePath>content</PackagePath>
+    </Content>
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="Build">
+    <CallTarget Targets="Pack"/>
+  </Target>
+</Project>
