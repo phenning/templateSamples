@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplatePackage", "template
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "templatepackages", "templatepackages", "{4B7F912B-A88E-4465-99EB-8C34D31EEAC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyConsoleTemplate", "vstemplates\MyConsoleTemplate\MyConsoleTemplate.csproj", "{C1CB2EEF-2713-4946-94EC-DA70893B7986}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vstemplates", "vstemplates", "{F388B85C-2C50-4647-967A-6E309140FA9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{F4D42D1F-26E6-427D-88C1-6E4336D49E72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4D42D1F-26E6-427D-88C1-6E4336D49E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4D42D1F-26E6-427D-88C1-6E4336D49E72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1CB2EEF-2713-4946-94EC-DA70893B7986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1CB2EEF-2713-4946-94EC-DA70893B7986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1CB2EEF-2713-4946-94EC-DA70893B7986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1CB2EEF-2713-4946-94EC-DA70893B7986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F4D42D1F-26E6-427D-88C1-6E4336D49E72} = {4B7F912B-A88E-4465-99EB-8C34D31EEAC9}
+		{C1CB2EEF-2713-4946-94EC-DA70893B7986} = {F388B85C-2C50-4647-967A-6E309140FA9E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A17FFC4D-2DE8-4CD8-96D1-7D4EA6D4E976}
