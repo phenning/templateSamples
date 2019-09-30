@@ -62,8 +62,7 @@ The last step is to create the [VSIX installer]((https://github.com/phenning/tem
 
 In this sample, we add a project reference to the vstemplate project previously created.
 
-We need to add the generated nupkg to the VSIX. In order to do this, we need to update the VSIX project file and manually add a [target]
-(https://github.com/phenning/templateSamples/blob/3638ff51d04ae637591508e7c2848cbdb988e2e8/vsix/TemplateVsix.csproj#L73)
+We need to add the generated nupkg to the VSIX. In order to do this, we need to update the VSIX project file and manually add a [target](https://github.com/phenning/templateSamples/blob/3638ff51d04ae637591508e7c2848cbdb988e2e8/vsix/TemplateVsix.csproj#L73)
 
 ```xml
   <Target Name="PreCreateVsixContainer" BeforeTargets="GetVsixSourceItems">
