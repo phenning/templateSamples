@@ -4,9 +4,9 @@ The folllowing sections describe the steps needed to create an installable VSIX 
 
 ## Create template and template package
 
-The first step is to create the .NET Core Template Engine template and package it into a nupkg for deployment. You can read more details about template creation here. https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates.
+The first step is to create the .NET Core Template Engine template and package it into a nupkg for deployment. You can read more details about template creation [here](https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates). 
 
-Notable pieces of information which will be needed for later steps are the ```groupIdentity``` and the ```language``` and ```type``` tags:
+Notable pieces of information in the [sample template package](https://github.com/phenning/templateSamples/tree/master/templatepackages/TemplatePackage) which will be needed for later steps are the ```groupIdentity``` and the ```language``` and ```type``` tags:
 
 ```json
   "tags": {
@@ -17,11 +17,10 @@ Notable pieces of information which will be needed for later steps are the ```gr
 ```
 With the generated nupkg, you could now install this template pack into the command line .NET Core CLI via ```dotnet new -i template.nupkg``` and invoke it via ```dotnet new MyCompany.Common.Console```.
 
-The sample for this project is here: https://github.com/phenning/templateSamples/tree/master/templatepackages/TemplatePackage
 
 ## Create vstemplate “breadcrumb”
 
-After creating the template and template pack, the next step is to create a vstemplate “breadcrumb” template which will invoke the wizard which implements the logic to create .NET Core Template Engine templates. Start with creating a C# Project Template from within Visual Studio, and update the generated vstemplate file with the following, updating the template name and description and specifying the proper values for the language and groupid in the CustomParameters. A critical piece of information to note, the Type of the VSTemplate should be updated from the default ```Project``` to ```ProjectGroup```.
+After creating the template and template pack, the next step is to create a [vstemplate “breadcrumb” template](https://github.com/phenning/templateSamples/tree/master/vstemplates/MyConsoleTemplate) to invoke the wizard which implements the logic to create .NET Core Template Engine templates. Start with creating a C# Project Template from within Visual Studio, and update the generated vstemplate file with the following, updating the template name and description and specifying the proper values for the language and groupid in the CustomParameters. A critical piece of information to note, the Type of the VSTemplate should be updated from the default ```Project``` to ```ProjectGroup```.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -57,17 +56,14 @@ After creating the template and template pack, the next step is to create a vste
 </VSTemplate>
 ```
 
-This sample vstemplate and project template project can be found here: https://github.com/phenning/templateSamples/tree/master/vstemplates/MyConsoleTemplate
-
 ## Create Vsix for vstemplate installation
 
-The last step is to create the VSIX installer. The sample can be found here:
-https://github.com/phenning/templateSamples/tree/master/vsix
+The last step is to create the [VSIX installer]((https://github.com/phenning/templateSamples/tree/master/vsix))
 
 In this sample, we add a project reference to the vstemplate project previously created.
 
-We need to add the generated nupkg to the VSIX. In order to do this, we need to update the VSIX project file and manually add the following target:
-https://github.com/phenning/templateSamples/blob/3638ff51d04ae637591508e7c2848cbdb988e2e8/vsix/TemplateVsix.csproj#L73
+We need to add the generated nupkg to the VSIX. In order to do this, we need to update the VSIX project file and manually add a [target]
+(https://github.com/phenning/templateSamples/blob/3638ff51d04ae637591508e7c2848cbdb988e2e8/vsix/TemplateVsix.csproj#L73)
 
 ```xml
   <Target Name="PreCreateVsixContainer" BeforeTargets="GetVsixSourceItems">
@@ -83,8 +79,7 @@ https://github.com/phenning/templateSamples/blob/3638ff51d04ae637591508e7c2848cb
   </Target>
 ```
 
-Additionally, we need to add the following pkgdef to the VSIX which tells the template discovery where to find the template nupkg.
-https://github.com/phenning/templateSamples/blob/master/vsix/Templates.pkgdef
+Additionally, we need to add the following [pkgdef](https://github.com/phenning/templateSamples/blob/master/vsix/Templates.pkgdef) to the VSIX which tells the template discovery where to find the template nupkg.
 
 ```pkgdef
 [$RootKey$\TemplateEngine\Templates\MyCompany.SampleTemplates\1.0.0]
