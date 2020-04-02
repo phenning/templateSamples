@@ -17,6 +17,7 @@ Notable pieces of information in the [sample template package](https://github.co
 ```
 With the generated nupkg, you could now install this template pack into the command line .NET Core CLI via ```dotnet new -i template.nupkg``` and invoke it via ```dotnet new MyCompany.Common.Console```.
 
+Another thing to note is that the nupkg file structure is important. You can have one or more templates in a template pack, but they need to be in indidual of a folder named "content" at the package root.
 
 ## Create vstemplate “breadcrumb”
 
