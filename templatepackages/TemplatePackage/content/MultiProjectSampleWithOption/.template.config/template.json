@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "My Company",
+  "classifications": [ "Common", "Console" ],
+  "name": "Multiproject Sample with option",
+  "generatorVersions": "[1.0.0.0-*)",
+  "description": "A project for creating a command-line application that can run on .NET Core on Windows, Linux and macOS",
+  "groupIdentity": "MyCompany.MultiProjectConsoleWithOption",
+  "precedence": "5000",
+  "identity": "MyCompany.MultiProjectConsoleWithOption.3.0",
+  "shortName": "optmultiproj",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Company.ConsoleApplication1",
+  "preferNameDirectory": true,
+  "symbols": {
+    "Framework": {
+      "type": "parameter",
+      "description": "The target framework for the project.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "netcoreapp3.0",
+          "description": "Target netcoreapp3.0"
+        }
+      ],
+      "replaces": "netcoreapp3.0",
+      "defaultValue": "netcoreapp3.0"
+    },
+    "langVersion": {
+      "type": "parameter",
+      "datatype": "text",
+      "description": "Sets the LangVersion property in the created project file",
+      "defaultValue": "",
+      "replaces": "$(ProjectLanguageVersion)"
+    },
+    "HostIdentifier": {
+      "type": "bind",
+      "binding": "HostIdentifier"
+    },
+    "skipRestore": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If specified, skips the automatic restore of the project on create.",
+      "defaultValue": "false"
+    },
+    "CreateSecondaryProject": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If specified, creates the secondary project.",
+      "defaultValue": "true"
+    }
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        ".template.config/**"
+      ],
+      "modifiers": [
+        {
+          "condition": "(!CreateSecondaryProject)",
+          "exclude": [
+            "SecondaryProject/**",
+            "*.sln"
+          ],
+          "rename": {
+            "PrimaryProject": "."
+          }
+        },
+        {
+          "condition": "(CreateSecondaryPoject && HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
+          "exclude": [
+            "*.sln"
+          ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
+      "path": "Program.cs"
+    },
+    {
+      "condition": "(CreateSecondaryProject && (HostIdentifier == \"dotnetcli\" || HostIdentifier == \"dotnetcli-preview\"))",
+      "path": "Company.ConsoleApplication1.sln"
+    },
+    {
+      "condition": "(CreateSecondaryProject && (HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\"))",
+      "path": "SecondaryProject/Company.ConsoleApplication1.Secondary.csproj"
+    },
+    {
+      "condition": "(!CreateSecondaryProject)",
+      "path": "Company.ConsoleApplication1.csproj"
+    },
+    {
+      "condition": "(CreateSecondaryProject && (HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\"))",
+      "path": "PrimaryProject/Company.ConsoleApplication1.csproj"
+    }
+  ],
+  "defaultName": "ConsoleApp1",
+  "postActions": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
+      "description": "Opens Program.cs in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    },
+    {
+      "condition": "(HostIdentifier == \"dotnetcli\" || HostIdentifier == \"dotnetcli-preview\")",
+      "description": "Add project files to solution",
+      "manualInstructions": [],
+      "actionId": "D396686C-DE0E-4DE6-906D-291CD29FC5DE",
+      "args": {
+        "projectFiles": [ "PrimaryProject/Company.ConsoleApplication1.csproj", "SecondaryProject/Company.ConsoleApplication1.Secondary.csproj" ]
+      },
+      "continueOnError": true
+    },
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        { "text": "Run 'dotnet restore'" }
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}
