@@ -1,0 +1,11 @@
+{
+  "symbolInfo": [
+    {
+      "id": "CreateSecondaryProject",
+      "name": {
+        "text": "Create a secondary _project"
+      },      
+      "isVisible": "true"
+    }
+  ]
+}

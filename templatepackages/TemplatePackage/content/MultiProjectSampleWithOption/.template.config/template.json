@@ -50,7 +50,7 @@
       "type": "parameter",
       "datatype": "bool",
       "description": "If specified, creates the secondary project.",
-      "defaultValue": "true"
+      "defaultValue": "false"
     }
   },
   "sources": [
