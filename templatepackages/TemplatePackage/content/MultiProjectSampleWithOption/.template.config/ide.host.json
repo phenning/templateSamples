@@ -4,8 +4,40 @@
       "id": "CreateSecondaryProject",
       "name": {
         "text": "Create a secondary _project"
-      },      
+      },
       "isVisible": "true"
-    }
+    },
+    {
+      "id": "Option1",
+      "name": {
+        "text": "Option false, override true"
+      },
+      "isVisible": "true",
+      "defaultValue": "true"
+    },
+    {
+      "id": "Option2",
+      "name": {
+        "text": "Option false, isInverted"
+      },
+      "isVisible": "true",
+      "invertBoolean": "true"
+    },
+    {
+      "id": "Option3",
+      "name": {
+        "text": "Option true, override false"
+      },
+      "isVisible": "true",
+      "defaultValue": "false"
+    },
+    {
+      "id": "Option4",
+      "name": {
+        "text": "Option true, isInverted"
+      },
+      "isVisible": "true",
+      "invertBoolean": "true"
+    }    
   ]
 }
