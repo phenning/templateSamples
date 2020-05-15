@@ -50,6 +50,30 @@
       "type": "parameter",
       "datatype": "bool",
       "description": "If specified, creates the secondary project.",
+      "defaultValue": "false"
+    },
+    "Option1": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "",
+      "defaultValue": "false"
+    },
+    "Option2": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "",
+      "defaultValue": "false"
+    },
+    "Option3": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "",
+      "defaultValue": "true"
+    },
+    "Option4": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "",
       "defaultValue": "true"
     }
   },
@@ -86,24 +110,36 @@
       "path": "Program.cs"
     },
     {
-      "condition": "(CreateSecondaryProject && (HostIdentifier == \"dotnetcli\" || HostIdentifier == \"dotnetcli-preview\"))",
-      "path": "Company.ConsoleApplication1.sln"
-    },
-    {
-      "condition": "(CreateSecondaryProject && (HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\"))",
-      "path": "SecondaryProject/Company.ConsoleApplication1.Secondary.csproj"
-    },
-    {
       "condition": "(!CreateSecondaryProject)",
       "path": "Company.ConsoleApplication1.csproj"
     },
     {
       "condition": "(CreateSecondaryProject && (HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\"))",
       "path": "PrimaryProject/Company.ConsoleApplication1.csproj"
+    },    
+    {
+      "condition": "(CreateSecondaryProject && (HostIdentifier == \"dotnetcli\" || HostIdentifier == \"dotnetcli-preview\"))",
+      "path": "Company.ConsoleApplication1.sln"
+    },
+    {
+      "condition": "(CreateSecondaryProject && (HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\"))",
+      "path": "SecondaryProject/Company.ConsoleApplication1.Secondary.csproj"
     }
   ],
   "defaultName": "ConsoleApp1",
   "postActions": [
+    {
+      "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
+      "description": "adds a reference",
+      "manualInstructions": [],
+      "actionId": "D90CA2D0-F984-4C7D-8309-4604949D67D4",
+      "args": {
+        "project": "1",
+        "packages": "id=PHenning.MyClassLib,version=1.0.0;id=phenning.myclasslib2,verSion=1.0.0",
+        "source": "TemplateVsix.b90a7150-bf18-48e3-9489-0378c85b5764"
+      },
+      "continueOnError": true
+    },
     {
       "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
       "description": "Opens Program.cs in the editor",
