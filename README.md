@@ -1,4 +1,11 @@
-# Create installable VSIX with template
+# To build this repository:
+
+This which includes building the template package, the stub vstemplate file and the VSIX
+
+```msbuild.exe SampleTemplate.sln /t:Restore;Build```
+
+
+# Walkthrough of creating the installable VSIX with template
 
 The folllowing sections describe the steps needed to create an installable VSIX for installation into Visual Studio 2019 16.3 or later. 
 
