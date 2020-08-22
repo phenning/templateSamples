@@ -2,7 +2,7 @@
 
 This which includes building the template package, the stub vstemplate file and the VSIX
 
-```msbuild.exe SampleTemplate.sln /t:Restore;Build```
+```msbuild.exe TemplateSample.sln /t:Restore;Build```
 
 
 # Walkthrough of creating the installable VSIX with template
