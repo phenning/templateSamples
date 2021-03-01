@@ -1,3 +1,7 @@
+# Overview 
+
+This repository was originally created to show how to use .NET template engine based templates in Visual Studio versions prior to Visual Studio 2019 16.8. Since 16.8, there is new functionality which eliminates the need for the vstemplate breadcrumb described below. Until the samples have been updated, please reference the Wiki for more information on specific metadata supported in the templates in order to best support this feature.
+
 # To build this repository:
 
 This which includes building the template package, the stub vstemplate file and the VSIX
