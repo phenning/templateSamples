@@ -30,44 +30,6 @@ With the generated nupkg, you could now install this template pack into the comm
 
 Another thing to note is that the nupkg file structure is important. You can have one or more templates in a template pack, but they need to be in indidual of a folder named "content" at the package root.
 
-## Create vstemplate “breadcrumb”
-
-After creating the template and template pack, the next step is to create a [vstemplate “breadcrumb” template](https://github.com/phenning/templateSamples/tree/master/vstemplates/MyConsoleTemplate) to invoke the wizard which implements the logic to create .NET Core Template Engine templates. Start with creating a C# Project Template from within Visual Studio, and update the generated vstemplate file with the following, updating the template name and description and specifying the proper values for the language and groupid in the CustomParameters. A critical piece of information to note, the Type of the VSTemplate should be updated from the default ```Project``` to ```ProjectGroup```.
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<VSTemplate Version="3.0.0" Type="ProjectGroup"  
-     xmlns="http://schemas.microsoft.com/developer/vstemplate/2005"    
-     xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
-  <TemplateData>
-    <Name>My Console Template</Name>
-    <Description>My Console Template for .NET Core</Description>
-    <Icon>MyConsoleTemplate.ico</Icon>
-    <ProjectType>CSharp</ProjectType>
-    <SortOrder>1000</SortOrder>
-    <TemplateID>917b2ee8-7bcf-4062-afef-0106c4a27848</TemplateID>
-    <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>MyConsoleTemplate</DefaultName>
-    <ProvideDefaultName>true</ProvideDefaultName>
-    <LanguageTag>csharp</LanguageTag>
-    <PlatformTag>linux</PlatformTag>
-    <PlatformTag>macos</PlatformTag>
-    <PlatformTag>windows</PlatformTag>
-  </TemplateData>
-  <TemplateContent>
-    <ProjectCollection/>
-    <CustomParameters>
-      <CustomParameter Name="$language$" Value="CSharp" />
-      <CustomParameter Name="$groupid$" Value="MyCompany.Common.Console"/>
-    </CustomParameters>
-  </TemplateContent>
-  <WizardExtension>
-    <Assembly>Microsoft.VisualStudio.TemplateEngine.Wizard, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
-    <FullClassName>Microsoft.VisualStudio.TemplateEngine.Wizard.TemplateEngineWizard</FullClassName>
-  </WizardExtension>
-</VSTemplate>
-```
-
 ## Create Vsix for vstemplate installation
 
 The last step is to create the [VSIX installer]((https://github.com/phenning/templateSamples/tree/master/vsix))
