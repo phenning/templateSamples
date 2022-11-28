@@ -34,9 +34,17 @@ Another thing to note is that the nupkg file structure is important. You can hav
 
 The last step is to create the [VSIX installer]((https://github.com/phenning/templateSamples/tree/master/vsix))
 
-In this sample, we add a project reference to the vstemplate project previously created.
+In this sample, we add a project reference to the vstemplate project previously created. Note, that in newer versions (2022 and later) of Visual Studio, you can skip creating the vstemplate and adding it to the VSIX, as Visual Studio will automatically discover templates packs installed. However, if you wish to continue to invoke through a vstemplate or use a custom wizard, you need to add the same metadata to an ide.host.json as shown [here](https://github.com/phenning/templateSamples/tree/master/templatepackages/templatepackages/TemplatePackage/content/MyCompany.Common.Console.CSharp/.template.config/ide.host.json). This will cause Visual Studio to still install the template so it can be invoked from a vstemplate file, but won't list the template itself - only the vstemplate will be shown.
 
-We need to add the generated nupkg to the VSIX. In order to do this, we need to update the VSIX project file and manually add the following [target](https://github.com/phenning/templateSamples/blob/3638ff51d04ae637591508e7c2848cbdb988e2e8/vsix/TemplateVsix.csproj#L73).
+```json
+{
+   "unsupportedHosts": [ 
+       { "id": "vs"  } 
+   ]
+}
+```
+
+We need to add the generated nupkg to the VSIX. In order to do this, we need to update the VSIX project file and manually add the following [target](https://github.com/phenning/templateSamples/blob/3638ff51d04ae637591508e7c2848cbdb988e2e8/vsix/TemplateVsix.csproj#L73). Note that this step is needed even if the vstemplate(s) are removed from the project. This will cause the nupkg to be pckaged in a ProjectTemplates subfolder under our package installation path.
 
 ```xml
   <Target Name="PreCreateVsixContainer" BeforeTargets="GetVsixSourceItems">
@@ -57,5 +65,10 @@ Additionally, we need to add the following [pkgdef](https://github.com/phenning/
 ```pkgdef
 [$RootKey$\TemplateEngine\Templates\MyCompany.SampleTemplates\1.0.0]
 "InstalledPath"="$PackageFolder$\ProjectTemplates"
+```
+
+Also add the following line to the source.extensions.vsixmanifest:
+```xml
+<Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Templates.pkgdef" />
 ```
 
