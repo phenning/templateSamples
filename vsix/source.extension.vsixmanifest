@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="TemplateVsix.b90a7150-bf18-48e3-9489-0378c85b5764" Version="1.0.0" Language="en-US" Publisher="My Company" />
         <DisplayName>TemplateVsix</DisplayName>
-        <Description xml:space="preserve">Visual Studio Extension containing a sample template nupkg and corresponding vstemplate breadcrumb vstemplate file.Visual Studio Extension containing a </Description>
+        <Description xml:space="preserve">Visual Studio Extension containing a sample template nupkg</Description>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />
@@ -12,7 +12,6 @@
         <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
     </Dependencies>
     <Assets>
-        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="MyConsoleTemplate" d:TargetPath="|MyConsoleTemplate;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Templates.pkgdef" />
     </Assets>
     <Prerequisites>
