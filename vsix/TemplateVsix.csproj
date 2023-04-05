@@ -53,16 +53,6 @@
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.2.3074" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\vstemplates\MyConsoleTemplate\MyConsoleTemplate.csproj">
-      <Project>{C1CB2EEF-2713-4946-94EC-DA70893B7986}</Project>
-      <Name>MyConsoleTemplate</Name>
-      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
-      <TemplateType>Project</TemplateType>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Templates.pkgdef">
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
